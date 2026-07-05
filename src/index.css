@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f7f1e7;
+    --foreground: #3e2a16;
+    --primary: #C96A2B;
+    --primary-light: #E08B4D;
+    --primary-dark: #A0521B;
+    --secondary: #B63A32;
+    --secondary-light: #D14F46;
+    --muted: #D1D1D1;
+    --border: rgba(255, 255, 255, 0.25);
+    --radius: 0.75rem;
+
+    /* Warm palette */
+    --warm-50: #f4e6d0;
+    --warm-100: #f7f1e7;
+    --warm-200: #e8c08f;
+    --warm-300: #d9a66a;
+    --warm-400: #c98b45;
+    --warm-500: #b07030;
+    --warm-600: #8a5a28;
+    --warm-700: #64421f;
+    --warm-800: #3e2a16;
+    --warm-900: #1a1209;
+  }
+
+  .dark {
+    --background: #1a1209;
+    --foreground: #ffffff;
+    --primary: #C96A2B;
+    --primary-light: #E08B4D;
+    --primary-dark: #A0521B;
+    --secondary: #B63A32;
+    --secondary-light: #D14F46;
+    --muted: #D1D1D1;
+    --border: rgba(255, 255, 255, 0.06);
+  }
+
+  * {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #C96A2B;
+    outline-offset: 2px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    background: linear-gradient(135deg, #f4e6d0 0%, #f7f1e7 40%, #e8c08f 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--foreground);
+  }
+
+  .dark body {
+    background: linear-gradient(135deg, #1a1209 0%, #1c1812 40%, #2d1f0f 100%);
+  }
+
+  ::selection {
+    background: rgba(201, 106, 43, 0.4);
+    color: inherit;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(62, 42, 22, 0.08);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(62, 42, 22, 0.1);
+  }
+
+  .dark .glass-light {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(62, 42, 22, 0.82) 0%,
+      rgba(201, 106, 43, 0.55) 40%,
+      rgba(182, 58, 50, 0.72) 100%
+    );
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(201, 106, 43, 0.4), 0 0 40px rgba(201, 106, 43, 0.2);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 30px rgba(201, 106, 43, 0.3);
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 106, 43, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(201, 106, 43, 0.7); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C96A2B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0521B;
+}
+.clip-hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.organic-shape {
+  border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+}
+
+.arch-shape {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.bubble-shape {
+  border-radius: 60% 40% 50% 50% / 40% 50% 50% 60%;
+}
