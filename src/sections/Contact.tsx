@@ -44,7 +44,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-warm-500 dark:text-white/50">Email</p>
-                  <p className="font-medium text-warm-900 dark:text-white">hello@watalii.org</p>
+                  <p className="font-medium text-warm-900 dark:text-white">wataliipodcast01@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 rounded-2xl glass p-4">
@@ -53,7 +53,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-warm-500 dark:text-white/50">Phone</p>
-                  <p className="font-medium text-warm-900 dark:text-white">+254 700 000 000</p>
+                  <p className="font-medium text-warm-900 dark:text-white">+254 725 513280</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 rounded-2xl glass p-4">
