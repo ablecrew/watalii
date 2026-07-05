@@ -16,7 +16,7 @@ import {
   ChevronUp,
   Loader2,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { usePodcastDetail } from "../hooks/usePodcastDetail";
 import { GuestCard } from "../components/GuestCard";
 import { CommentSection } from "../components/CommentSection";

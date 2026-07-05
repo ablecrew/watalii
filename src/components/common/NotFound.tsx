@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mic, ArrowLeft, Home } from "lucide-react";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 
 export function NotFound() {
   return (

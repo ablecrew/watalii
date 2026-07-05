@@ -15,7 +15,7 @@ import {
   Heart,
   Eye,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { cn } from "@/lib/utils";
 import { useMerchandise } from "../hooks/useMerchandise";
 import type { Merchandise } from "../lib/supabase";

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ShoppingBag, Star, ArrowRight, Loader2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { useProducts } from "../hooks/useProducts";
 
 export function Marketplace() {

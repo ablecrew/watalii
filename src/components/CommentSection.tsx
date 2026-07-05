@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, Send, User, Heart, Loader2 } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { usePodcastComments } from "../hooks/usePodcastComments";
 import type { PodcastComment } from "../lib/supabase";
 

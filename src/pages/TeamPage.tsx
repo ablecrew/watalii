@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Mail, Phone, Users, Globe, Loader2 } from "lucide-react";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { useTeam } from "../hooks/useTeam";
 import { cn } from "@/lib/utils";
 import type { TeamMember } from "../lib/supabase";

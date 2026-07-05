@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Play, Users, ArrowRight } from "lucide-react";
 
 const stats = [

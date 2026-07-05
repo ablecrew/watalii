@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface FormData {

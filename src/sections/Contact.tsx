@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);

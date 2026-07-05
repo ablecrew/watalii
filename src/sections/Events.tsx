@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, ArrowRight, Ticket, Loader2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { useEvents } from "../hooks/useEvents";
 
 export function Events() {

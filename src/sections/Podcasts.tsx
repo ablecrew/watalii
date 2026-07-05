@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Play, Clock, Mic2, TrendingUp, ArrowRight, Loader2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { usePodcasts } from "../hooks/usePodcasts";
 
 export function Podcasts() {

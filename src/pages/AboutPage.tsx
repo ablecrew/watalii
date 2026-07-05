@@ -10,7 +10,7 @@ import {
   Mic,
   ArrowRight,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 
 const stats = [
   { icon: Mic, number: "25+", label: "Episodes Produced" },

@@ -17,7 +17,7 @@ import {
   Radio,
   X,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { usePodcasts, usePodcastCategories, type PodcastView } from "../hooks/usePodcasts";
 import { getYouTubeEmbedUrl } from "../lib/youtube";
 import { cn } from "@/lib/utils";

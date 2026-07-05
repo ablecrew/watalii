@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Users, MessageCircle, MapPin, Loader2 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { useCommunity } from "../hooks/useCommunity";
 
 export function Community() {

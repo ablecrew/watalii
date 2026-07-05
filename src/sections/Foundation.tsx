@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Globe, GraduationCap, Trees, HandHeart } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { ImpactChart } from "../components/ImpactChart";
 
 const initiatives = [

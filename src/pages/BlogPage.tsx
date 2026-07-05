@@ -12,7 +12,7 @@ import {
   Heart,
   Share2,
 } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface BlogPost {
