@@ -39,6 +39,106 @@ export interface Merchandise {
 // =====================================================
 // Merchandise fetch helper (for Shop)
 // =====================================================
+// =====================================================
+// Gallery
+// =====================================================
+export interface GalleryImage {
+  id: number;
+  url: string;
+  caption: string;
+  category: string;
+  created_at: string;
+}
+
+export async function fetchGalleryImages(): Promise<GalleryImage[]> {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return [
+      {
+        id: 1,
+        url: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178833/WhatsApp_Image_2026-06-06_at_11.17.45_PM_xvdqtb.jpg",
+        caption: "Live recording session",
+        category: "Events",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: 2,
+        url: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178833/WhatsApp_Image_2026-06-06_at_11.17.48_PM_j5axlx.jpg",
+        caption: "Behind the scenes at the studio",
+        category: "Production",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: 3,
+        url: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178834/WhatsApp_Image_2026-06-06_at_11.17.49_PM_rezhlo.jpg",
+        caption: "Community gathering in Nairobi",
+        category: "Events",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: 4,
+        url: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178832/WhatsApp_Image_2026-06-06_at_11.17.43_PM_lyyiho.jpg",
+        caption: "Team meeting and planning",
+        category: "Behind the Scenes",
+        created_at: new Date().toISOString(),
+      },
+    ];
+  }
+
+  const { data, error } = await supabase
+    .from("gallery_images")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) return [];
+  return data || [];
+}
+
+// =====================================================
+// Achievements
+// =====================================================
+export interface Achievement {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  year: string;
+  type: string;
+  created_at: string;
+}
+
+export async function fetchAchievements(): Promise<Achievement[]> {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return [
+      {
+        id: 1,
+        title: "3rd Anniversary Celebration",
+        description: "Celebrating three years of amplifying African voices through powerful storytelling and community building.",
+        image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178832/WhatsApp_Image_2026-06-06_at_11.17.47_PM_waasyl.jpg",
+        year: "2026",
+        type: "Anniversary",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: 2,
+        title: "Thank You to Our Community",
+        description: "A heartfelt thank you to our listeners, partners, and supporters who have made our journey possible.",
+        image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178832/WhatsApp_Image_2026-06-06_at_11.17.47_P_xwr3vp.jpg",
+        year: "2026",
+        type: "Milestone",
+        created_at: new Date().toISOString(),
+      },
+    ];
+  }
+
+  const { data, error } = await supabase
+    .from("achievements")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) return [];
+  return data || [];
+}
+
 export async function fetchMerchandise(): Promise<Merchandise[]> {
   // Simulated data with your Cloudinary images
   const merchandiseData: Merchandise[] = [
@@ -48,8 +148,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-iphone-case",
       description: "Premium protective case featuring the iconic WATALII branding. Slim design with raised edges for screen and camera protection.",
       short_description: "Premium WATALII iPhone case",
-      price: 2499,
-      compare_price: 3499,
+      price: 599,
+      compare_price: 999,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178957/iphone-case-watalii_1_fpdvkv.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178957/iphone-case-watalii_1_fpdvkv.png",
@@ -72,8 +172,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-signature-t-shirt",
       description: "Premium cotton tee with the bold WATALII logo. Ultra-soft, breathable fabric perfect for everyday wear.",
       short_description: "Signature WATALII cotton t-shirt",
-      price: 1899,
-      compare_price: 2499,
+      price: 800,
+      compare_price: 1200,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178831/WhatsApp_Image_2026-06-06_at_11.17.44_PM_jrbs9w.jpg"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783178831/WhatsApp_Image_2026-06-06_at_11.17.44_PM_jrbs9w.jpg",
@@ -110,8 +210,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-ceramic-plate",
       description: "Elegant ceramic dinner plate with the distinctive WATALII design. Dishwasher and microwave safe.",
       short_description: "WATALII ceramic dinner plate",
-      price: 1299,
-      compare_price: 1799,
+      price: 699,
+      compare_price: 999,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177915/plate-watalii_cdtpai.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177915/plate-watalii_cdtpai.png",
@@ -134,8 +234,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-tote-bag",
       description: "Durable canvas shopping bag with premium WATALII embroidery. Perfect for daily errands and market runs.",
       short_description: "WATALII canvas tote bag",
-      price: 999,
-      compare_price: 1499,
+      price: 299,
+      compare_price: 499,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177893/shopping-bag-watalii_vjhcnc.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177893/shopping-bag-watalii_vjhcnc.png",
@@ -158,8 +258,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-hardcover-journal",
       description: "Premium hardcover notebook with 200 pages of high-quality paper. Perfect for notes, ideas, and reflections.",
       short_description: "WATALII hardcover journal",
-      price: 1599,
-      compare_price: 2199,
+      price: 899,
+      compare_price: 1299,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177890/hardcover-book-watalii_fmbrhd.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177890/hardcover-book-watalii_fmbrhd.png",
@@ -182,8 +282,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-food-container",
       description: "Eco-friendly reusable food container with secure lock lid. Ideal for lunch and meal prep.",
       short_description: "WATALII reusable food container",
-      price: 799,
-      compare_price: 1199,
+      price: 199,
+      compare_price: 399,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177886/plastic-food-container-watalii_rotklw.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177886/plastic-food-container-watalii_rotklw.png",
@@ -206,8 +306,8 @@ export async function fetchMerchandise(): Promise<Merchandise[]> {
       slug: "watalii-coffee-bag",
       description: "Premium single-origin Kenyan coffee beans. 250g resealable bag with rich, bold flavor notes.",
       short_description: "WATALII Kenyan coffee beans",
-      price: 1199,
-      compare_price: 1599,
+      price: 199,
+      compare_price: 399,
       currency: "KES",
       images: ["https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177884/coffee-bag-mockup_wlublv.png"],
       cover_image: "https://res.cloudinary.com/ddeihyhm5/image/upload/v1783177884/coffee-bag-mockup_wlublv.png",

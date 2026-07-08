@@ -17,8 +17,10 @@ import {
   Menu,
   X,
   ChevronDown,
+  Camera,
+  Award,
 } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
@@ -44,6 +46,8 @@ const navItems: NavItem[] = [
   { label: "Shop", href: "/shop", icon: Store, description: "Merch & products" },
   { label: "Events", href: "/events", icon: Calendar, description: "Upcoming gatherings" },
   { label: "Blog", href: "/blog", icon: Newspaper, description: "Stories & updates" },
+  { label: "Gallery", href: "/gallery", icon: Camera, description: "Moments from our journey" },
+  { label: "Achievements", href: "/achievements", icon: Award, description: "Milestones & celebrations" },
   { label: "Contact", href: "/contact", icon: Mail, description: "Get in touch" },
 ];
 
@@ -69,13 +73,18 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
     ? "text-warm-800 dark:text-white/80 dark:hover:text-white"
     : "text-white/90 hover:text-white";
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 transition-all duration-500",
+        "fixed left-0 right-0 top-0 z-[999] transition-all duration-500",
         scrolled ? "py-3" : "py-5"
       )}
     >
@@ -86,8 +95,8 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
         )}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl shadow-lg">
+        <Link to="/" className="flex items-center gap-3 group flex-shrink-0" onClick={() => setMobileOpen(false)}>
+          <div className="relative flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-xl shadow-lg">
             <img
               src="/images/watalii-logo.jpg"
               alt="WATALII"
@@ -96,7 +105,7 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
           </div>
           <span
             className={cn(
-              "font-display text-xl font-bold tracking-tight transition-colors",
+              "font-display text-lg sm:text-xl font-bold tracking-tight transition-colors",
               scrolled || !isHome ? "text-warm-900 dark:text-white" : "text-white"
             )}
           >
@@ -183,14 +192,33 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
           </div>
 
           <Link
-            to="/contact"
+            to="/about"
             className={cn(
               "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-primary",
               navTextClass
             )}
           >
-            Contact
+            About
           </Link>
+          <Link
+            to="/gallery"
+             className={cn(
+               "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-primary",
+               navTextClass
+             )}
+           >
+             Gallery
+           </Link>
+          <Link
+            to="/contact"
+            className={cn(
+                "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-primary",
+                navTextClass
+               )}
+             >
+               Contact
+             </Link>
+
         </div>
 
         {/* Right Actions */}
@@ -233,31 +261,33 @@ export function Navbar({ theme, toggleTheme }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fixed & Responsive */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mx-4 mt-2 overflow-hidden rounded-3xl glass-light shadow-2xl"
+            className="lg:hidden fixed left-0 right-0 top-[72px] z-[998] overflow-hidden"
           >
-            <div className="p-4 space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={getRouteFromHash(item.href)}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 rounded-2xl p-3 text-warm-800 transition-colors hover:bg-primary/10 dark:text-white"
-                >
-                  <item.icon className="h-5 w-5 text-primary" />
-                  <span className="font-medium">{item.label}</span>
-                </Link>
-              ))}
-              <div className="pt-3">
-                <Button className="w-full" variant="primary" glow>
-                  Support Our Mission
-                </Button>
+            <div className="mx-3 mt-2 max-h-[calc(100vh-100px)] overflow-y-auto rounded-3xl glass-light shadow-2xl border border-white/10">
+              <div className="p-4 space-y-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={getRouteFromHash(item.href)}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 rounded-2xl p-3.5 text-warm-800 transition-colors hover:bg-primary/10 dark:text-white active:bg-primary/20"
+                  >
+                    <item.icon className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                ))}
+                <div className="pt-3 px-1">
+                  <Button className="w-full" variant="primary" glow onClick={() => setMobileOpen(false)}>
+                    Support Our Mission
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>

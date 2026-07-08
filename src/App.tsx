@@ -25,6 +25,8 @@ import { EventsPage } from "./pages/EventsPage";
 import { AboutPage } from "./pages/AboutPage";
 import { TermsPage } from "./legal/TermsPage";
 import { PrivacyPage } from "./legal/PrivacyPage";
+import { GalleryPage } from "./pages/GalleryPage";
+import { AchievementsPage } from "./pages/AchievementsPage";
 import { NotFound } from "./components/common/NotFound";
 import { useTheme } from "./hooks/useTheme";
 
@@ -76,6 +78,8 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
 
           {/* 404 Catch-All - MUST BE LAST */}
           <Route path="*" element={<NotFound />} />
